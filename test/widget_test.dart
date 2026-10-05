@@ -5,6 +5,7 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:treso/main.dart';
@@ -14,7 +15,8 @@ void main() {
     await tester.pumpWidget(const TresoApp());
     await tester.pumpAndSettle();
 
+    expect(find.byType(MainNavigationShell), findsOneWidget);
     expect(find.text('Dashboard'), findsOneWidget);
-    expect(find.text('Tableau de bord'), findsOneWidget);
+    expect(find.text('Transactions'), findsOneWidget);
   });
 }

@@ -2,6 +2,7 @@
 
 import 'screens/catalog_screen.dart';
 import 'screens/dashboard_screen.dart';
+import 'screens/reports_screen.dart';
 import 'screens/transactions_screen.dart';
 
 void main() {
@@ -46,6 +47,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   static const List<Widget> _screens = [
     DashboardScreen(),
     TransactionsScreen(),
+    ReportsScreen(),
     CatalogScreen(),
   ];
 
@@ -70,6 +72,11 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
             icon: Icon(Icons.receipt_long_outlined),
             selectedIcon: Icon(Icons.receipt_long),
             label: 'Transactions',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart_rounded),
+            selectedIcon: Icon(Icons.bar_chart),
+            label: 'Rapports',
           ),
           NavigationDestination(
             icon: Icon(Icons.folder_copy_outlined),

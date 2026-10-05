@@ -142,6 +142,29 @@ class TransactionRepository {
     );
   }
 
+  Future<DashboardSummary> getPeriodSummary({required DateTime start, required DateTime end}) async {
+    final transactions = await getTransactions(start: start, end: end);
+
+    double totalIncome = 0;
+    double totalExpense = 0;
+
+    for (final transaction in transactions) {
+      if (transaction.type == TransactionType.income) {
+        totalIncome += transaction.amount;
+      } else {
+        totalExpense += transaction.amount;
+      }
+    }
+
+    return DashboardSummary(
+      totalIncome: totalIncome,
+      totalExpense: totalExpense,
+      balance: totalIncome - totalExpense,
+      dayBalance: 0,
+      monthBalance: 0,
+    );
+  }
+
   Future<List<ActivitySummary>> getActivityBreakdown({DateTime? start, DateTime? end}) async {
     final db = await _database.database;
     String whereClause = '';
